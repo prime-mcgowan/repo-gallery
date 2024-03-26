@@ -1,6 +1,8 @@
 // * Global Variables *************************************************************
 // ********************************************************************************
 const profileOverview = document.querySelector(".overview");
+const repoListDisplay = document.querySelector(".repo-list");
+
 let username = "prime-mcgowan";
 
 // * Fetch API JSON Data *************************************************************
@@ -10,8 +12,12 @@ const fetchProfileData = async function () {
 
   const info = await profileInfo.json();
   //   console.log(info);
+
+  //call the function to display user info and give it the JSON data as an arguement
   displayProfileData(info);
 };
+
+//call the function
 fetchProfileData();
 
 // * Fetch & Display User Information ***************************************************
@@ -36,3 +42,23 @@ const displayProfileData = function (info) {
   //append the div to the "overview" element
   profileOverview.append(div);
 };
+
+// * Fetch Repos ************************************************************************
+// **************************************************************************************
+
+// const fetchProfileData = async function () {
+//     const profileInfo = await fetch(`https://api.github.com/users/${username}`);
+
+//     const info = await profileInfo.json();
+//     //   console.log(info);
+
+const fetchRepos = async function () {
+  const reposList = await fetch(
+    `https://api.github.com/users/${username}/repos?sort=updated`
+  );
+
+  const repos = await reposList.json();
+  console.log(repos);
+};
+
+fetchRepos();
