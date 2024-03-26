@@ -3,6 +3,8 @@
 const profileOverview = document.querySelector(".overview");
 let username = "prime-mcgowan";
 const repoListDisplay = document.querySelector(".repo-list");
+const repoSection = document.querySelector(".repos");
+const individualRepoData = document.querySelector(".repo-data");
 
 // * Fetch API JSON Data *************************************************************
 // ***********************************************************************************
@@ -65,4 +67,26 @@ const displayRepoInfo = function (repos) {
 
     repoListDisplay.append(repoItem);
   }
+};
+
+// * RepoListDisplay Click Event ************************************************************************
+// ******************************************************************************************************
+repoListDisplay.addEventListener("click", function (e) {
+  //checkto see if the what was clicked on matches matches the name of the repo (h3)
+  if (e.target.matches("h3")) {
+    //create a variable to target the innerText where the event happens
+    const repoName = e.target.innerText;
+    fetchRepoInfo(repoName);
+  }
+});
+
+// * Get Info for a Specific Repo ***********************************************************************
+// ******************************************************************************************************
+const fetchRepoInfo = async function (repoName) {
+  const request = await fetch(
+    `https://api.github.com/repos/${username}/${repoName}`
+  );
+
+  const repoInfo = await request.json();
+  console.log(repoInfo);
 };
