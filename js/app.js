@@ -1,6 +1,6 @@
 // * Global Variables *************************************************************
 // ********************************************************************************
-const profileOverview = document.querySelector("overview");
+const profileOverview = document.querySelector(".overview");
 let username = "prime-mcgowan";
 
 // * Fetch API JSON Data *************************************************************
@@ -9,7 +9,8 @@ const fetchProfileData = async function () {
   const profileInfo = await fetch(`https://api.github.com/users/${username}`);
 
   const info = await profileInfo.json();
-  console.log(info);
+  //   console.log(info);
+  displayProfileData(info);
 };
 fetchProfileData();
 
@@ -23,13 +24,13 @@ const displayProfileData = function (info) {
   div.classList.add("user-info");
   //populate the div with important elements - grab using dot notation
   div.innerHTML = `  <figure>
-    <img alt="user avatar" src=${info.avatar_ul} />
+    <img alt="user avatar" src=${info.avatar_url} />
   </figure>
   <div>
-    <p><strong>Name:</strong> ${info.login}</p>
+    <p><strong>Name:</strong> ${info.name}</p>
     <p><strong>Bio:</strong> ${info.bio}</p>
     <p><strong>Location:</strong> ${info.location}</p>
-    <p><strong>Number of public repos:</strong> ${info.public - repos}</p>
+    <p><strong>Number of public repos:</strong> ${info.public_repos}</p>
   </div> `;
 
   //append the div to the "overview" element
