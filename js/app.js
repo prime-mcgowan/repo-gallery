@@ -88,5 +88,17 @@ const fetchRepoInfo = async function (repoName) {
   );
 
   const repoInfo = await request.json();
-  console.log(repoInfo);
+  //   console.log(repoInfo);
+
+  //fetch data from languages_url
+  const fetchLanguages = await fetch(repoInfo.languages_url);
+  //save the JSON response from above
+  const languageData = await fetchLanguages.json();
+
+  //list of languages
+  const languages = [];
+  for (let language in languageData) {
+    languages.push(language);
+  }
+  console.log(languages);
 };
