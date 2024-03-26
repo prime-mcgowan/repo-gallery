@@ -6,7 +6,7 @@ const repoListDisplay = document.querySelector(".repo-list");
 const repoSection = document.querySelector(".repos");
 const individualRepoData = document.querySelector(".repo-data");
 const backToGalleryButton = document.querySelector(".view-repos");
-const filterInput = document.querySelector("search by name");
+const filterInput = document.querySelector(".filter-repos");
 
 // * Fetch API JSON Data *************************************************************
 // ***********************************************************************************
@@ -62,6 +62,7 @@ const fetchRepos = async function () {
 // * Display Info About Your Repos ******************************************************
 // **************************************************************************************
 const displayRepoInfo = function (repos) {
+  filterInput.classList.remove("hide");
   for (let repo of repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
