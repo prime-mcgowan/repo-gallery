@@ -5,7 +5,8 @@ let username = "prime-mcgowan";
 const repoListDisplay = document.querySelector(".repo-list");
 const repoSection = document.querySelector(".repos");
 const individualRepoData = document.querySelector(".repo-data");
-const backToRepos = document.querySelector(".view-repos");
+const backToGalleryButton = document.querySelector(".view-repos");
+const filterInput = document.querySelector("search by name");
 
 // * Fetch API JSON Data *************************************************************
 // ***********************************************************************************
@@ -111,7 +112,7 @@ const displayIndividualRepoInfo = function (repoInfo, languages) {
   individualRepoData.innerHTML = "";
   individualRepoData.classList.remove("hide");
   repoSection.classList.add("hide");
-  backToRepos.classList.remove("hide");
+  backToGalleryButton.classList.remove("hide");
   let div = document.createElement("div");
   div.innerHTML = `
     <h3>Name: ${repoInfo.name}</h3>
@@ -125,3 +126,9 @@ const displayIndividualRepoInfo = function (repoInfo, languages) {
     `;
   individualRepoData.append(div);
 };
+
+backToGalleryButton.addEventListener("click", function () {
+  repoSection.classList.remove("hide");
+  individualRepoData.classList.add("hide");
+  backToGalleryButton.classList.add("hide");
+});
