@@ -68,6 +68,11 @@ const displayRepoInfo = function (repos) {
     repoItem.classList.add("repo");
     repoItem.innerHTML = `<h3>${repo.name}</h3>`;
 
+    repoItem.setAttribute("tabindex", "0");
+
+    //keydown event listener =  accessibility
+    repoName = document.activeElement.innerText;
+
     repoListDisplay.append(repoItem);
   }
 };
@@ -80,6 +85,17 @@ repoListDisplay.addEventListener("click", function (e) {
     //create a variable to target the innerText where the event happens
     const repoName = e.target.innerText;
     fetchIndividualRepoInfo(repoName);
+  }
+});
+
+//keydown event listener = accessibility
+//listening for the Enter/Return key to be pressed
+repoListDisplay.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    if (document.activeElement.classList.contains("repo")) {
+      const repoName = document.activeElement.innerText;
+      fetchIndividualRepoInfo(repoName);
+    }
   }
 });
 
@@ -127,7 +143,7 @@ const displayIndividualRepoInfo = function (repoInfo, languages) {
     <a class="visit" href="${
       repoInfo.html_url
     }" target="_blank" rel="noreferrer noopener">
-    View Repo on Github!</a>
+    View Repo on Github</a>
     `;
   console.log(repoInfo);
   individualRepoData.append(div);
