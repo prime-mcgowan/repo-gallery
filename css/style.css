@@ -311,8 +311,13 @@ section.repo-data {
   margin-top: 2em;
   cursor: pointer;
   display: block;
-  background-color: #483978;
-  border: 1px solid #483978;
+  background-color: #f86d58;
+  border: 1px solid #f86d58;
+}
+
+.repo-data .tryItOut:hover {
+  background-color: #f24d33;
+  border: 1px solid #ccc;
 }
 
 .button-container {

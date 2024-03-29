@@ -123,7 +123,7 @@ const displayIndividualRepoInfo = function (repoInfo, languages) {
     <a class="tryItOut" href="${
       repoInfo.homepage
     }" target="_blank" rel="noreferrer noopener">
-        Try it out!</a>
+        See it in action!</a>
     <a class="visit" href="${
       repoInfo.html_url
     }" target="_blank" rel="noreferrer noopener">
