@@ -62,7 +62,7 @@ const fetchRepos = async function () {
 // * Display Info About Your Repos ******************************************************
 // **************************************************************************************
 const displayRepoInfo = function (repos) {
-  filterInput.classList.remove("hide");
+  //   filterInput.classList.remove("hide");
   for (let repo of repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
@@ -120,11 +120,16 @@ const displayIndividualRepoInfo = function (repoInfo, languages) {
     <p>Description: ${repoInfo.description}</p>
     <p>Default Branch: ${repoInfo.default_branch}</p>
     <p>Languages: ${languages.join(", ")}</p>
+    <a class="tryItOut" href="${
+      repoInfo.homepage
+    }" target="_blank" rel="noreferrer noopener">
+        Try it out!</a>
     <a class="visit" href="${
       repoInfo.html_url
     }" target="_blank" rel="noreferrer noopener">
     View Repo on Github!</a>
     `;
+  console.log(repoInfo);
   individualRepoData.append(div);
 };
 
