@@ -51,7 +51,7 @@ const displayProfileData = function (info) {
 // **************************************************************************************
 const fetchRepos = async function () {
   const reposList = await fetch(
-    `https://api.github.com/users/${username}/repos?sort=updated`
+    `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`
   );
 
   const repoData = await reposList.json();
