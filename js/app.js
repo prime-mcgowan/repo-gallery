@@ -62,14 +62,15 @@ const fetchRepos = async function () {
 // * Display Info About Your Repos ******************************************************
 // **************************************************************************************
 const displayRepoInfo = function (repos) {
-  //   filterInput.classList.remove("hide");
+  //   filterInput.classList.remove("hide"); //for search bar...decided not to include
   for (let repo of repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
     repoItem.innerHTML = `<h3>${repo.name}</h3>`;
 
+    // ! Accessibility Features
+    //allows users to tab through list of repos
     repoItem.setAttribute("tabindex", "0");
-
     //keydown event listener =  accessibility
     repoName = document.activeElement.innerText;
 
@@ -88,7 +89,8 @@ repoListDisplay.addEventListener("click", function (e) {
   }
 });
 
-//keydown event listener = accessibility
+//! Accessibility Feature
+//keydown event listener
 //listening for the Enter/Return key to be pressed
 repoListDisplay.addEventListener("keydown", function (e) {
   if (e.keyCode === 13) {
